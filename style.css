@@ -18,10 +18,18 @@ body {
 }
 
 .grids {
+  display: flex;
+  flex-wrap: wrap;
   background-color: white;
   margin: 50px;
   height: 600px;
   width: 600px;
+}
+
+.grid {
+  border: 0px;
+  margin: 0px;
+  cursor: crosshair;
 }
 
 .function-container {
