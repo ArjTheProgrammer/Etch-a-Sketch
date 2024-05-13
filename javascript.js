@@ -4,22 +4,31 @@ const colorpicker = document.querySelector("#color-picker");
 const clearButton = document.querySelector(".clear-button");
 const randomColorButton = document.querySelector(".random-color");
 
+let color = "#000000";
+let draw = false;
+
+document.body.addEventListener("mousedown", () => {
+    draw = true;
+})
+
+document.body.addEventListener("mouseup", () => {
+    draw = false;
+})
+
+colorpicker.addEventListener("input", () => {
+    color = `${colorpicker.value}`;
+})
 
 //for the function of slider
 const displaySliderValue = document.querySelector(".display-slider-value");
 displaySliderValue.textContent = `Grids: ${slider.value}`;
+addGrids(slider.value);
 
 slider.addEventListener("input", () => {
     clearGrid();
     displaySliderValue.textContent = `Grids: ${slider.value}`;
     addGrids(slider.value);
 });
-
-//for the function of color picking
-let color = colorpicker.addEventListener("input", () => {
-    console.log(colorpicker.value);
-    return colorpicker.value;
-})
 
 function addGrids(N){
     let totalN = N * N;
@@ -35,14 +44,20 @@ function addGrids(N){
         grid.style.height = `${height}px`;
         grid.style.width = `${width}px`;
 
+        grid.addEventListener("mouseover", (e) => {
+            if (draw){
+                fillGrid(e);
+            }
+        });
         grids.appendChild(grid);
     }
 }
 
 function clearGrid(){
     grids.innerHTML = "";
+    addGrids(slider.value);
 }
 
-function draw() {
-
-}
+    function fillGrid(e){
+        e.target.style.backgroundColor = color;
+    }
