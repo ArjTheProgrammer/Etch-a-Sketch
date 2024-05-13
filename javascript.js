@@ -3,15 +3,16 @@ const slider = document.querySelector(".grid-slider");
 const colorpicker = document.querySelector("#color-picker");
 const clearButton = document.querySelector(".clear-button");
 const randomColorButton = document.querySelector(".random-color");
+const body = document.querySelector("body");
 
 let color = "#000000";
 let draw = false;
 
-document.body.addEventListener("mousedown", () => {
+body.addEventListener("mousedown", () => {
     draw = true;
 })
 
-document.body.addEventListener("mouseup", () => {
+body.addEventListener("mouseup", () => {
     draw = false;
 })
 
@@ -58,6 +59,6 @@ function clearGrid(){
     addGrids(slider.value);
 }
 
-    function fillGrid(e){
-        e.target.style.backgroundColor = color;
-    }
+function fillGrid(e){
+    e.target.style.backgroundColor = color;
+}
