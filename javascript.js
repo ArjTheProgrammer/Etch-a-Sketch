@@ -7,6 +7,7 @@ const body = document.querySelector("body");
 
 let color = "#000000";
 let draw = false;
+let clickRandomButton = false;
 
 
 //events that happen in the projects
@@ -26,6 +27,9 @@ clearButton.addEventListener("click", () => {
     clearGrid();
 })
 
+randomColorButton.addEventListener("click", () => {
+    updateRandomButton();
+})
 //for the function of slider
 const displaySliderValue = document.querySelector(".display-slider-value");
 displaySliderValue.textContent = `Grids: ${slider.value}`;
@@ -66,8 +70,14 @@ function clearGrid(){
 }
 
 function fillGrid(e){
-    e.target.style.backgroundColor = color;
+    if (clickRandomButton == true){
+        e.target.style.backgroundColor = randomColor();
+    }
+    else {
+        e.target.style.backgroundColor = color;
+    }
 }
+
 
 function randomColor(){
     let letters = '0123456789ABCDEF'
@@ -78,4 +88,19 @@ function randomColor(){
     }
 
     return color;
+}
+
+function selected(e){
+    e.style.backgroundColor = "red";
+}
+
+function updateRandomButton(){
+    if (clickRandomButton == true){
+        randomColorButton.style.backgroundColor = "white";
+        clickRandomButton = false;
+    }
+    else {
+        randomColorButton.style.backgroundColor = "red";
+        clickRandomButton = true;
+    }
 }
