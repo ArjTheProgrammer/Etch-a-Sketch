@@ -8,6 +8,8 @@ const body = document.querySelector("body");
 let color = "#000000";
 let draw = false;
 
+
+//events that happen in the projects
 body.addEventListener("mousedown", () => {
     draw = true;
 })
@@ -18,6 +20,10 @@ body.addEventListener("mouseup", () => {
 
 colorpicker.addEventListener("input", () => {
     color = `${colorpicker.value}`;
+})
+
+clearButton.addEventListener("click", () => {
+    clearGrid();
 })
 
 //for the function of slider
@@ -61,4 +67,15 @@ function clearGrid(){
 
 function fillGrid(e){
     e.target.style.backgroundColor = color;
+}
+
+function randomColor(){
+    let letters = '0123456789ABCDEF'
+    let color = '#';
+
+    for (let i = 1 ; i <= 6; i++){
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+
+    return color;
 }
