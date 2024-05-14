@@ -25,6 +25,7 @@ colorpicker.addEventListener("input", () => {
 
 clearButton.addEventListener("click", () => {
     clearGrid();
+    addGrids(slider.value);
 })
 
 randomColorButton.addEventListener("click", () => {
@@ -66,7 +67,6 @@ function addGrids(N){
 
 function clearGrid(){
     grids.innerHTML = "";
-    addGrids(slider.value);
 }
 
 function fillGrid(e){
